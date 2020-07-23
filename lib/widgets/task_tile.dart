@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 
 class TaskTile extends StatelessWidget {
-  const TaskTile({this.text, this.isChecked, this.toggleCheckboxState});
+  const TaskTile(
+      {this.text, this.isChecked, this.toggleCheckbox, this.onLongPress});
 
   final String text;
   final bool isChecked;
-  final Function toggleCheckboxState;
+  final Function toggleCheckbox;
+  final Function onLongPress;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      onLongPress: onLongPress,
       title: Text(
         text,
         style: TextStyle(
@@ -17,7 +20,7 @@ class TaskTile extends StatelessWidget {
       ),
       trailing: Checkbox(
         value: isChecked,
-        onChanged: toggleCheckboxState,
+        onChanged: toggleCheckbox,
       ),
     );
   }
